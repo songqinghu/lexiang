@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.lexiangzhongren</groupId>
+    <artifactId>lexiang-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.lexiangzhongren</groupId>
+  <artifactId>lexiang-manager</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>manager</name>
+  
+  <dependencies>
+  	<dependency>
+      		 <groupId>com.lexiangzhongren</groupId>
+  			<artifactId>lexiang-common</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  
+  
+  <modules>
+  	<module>lexiang-manager-pojo</module>
+  	<module>lexiang-manager-mapper</module>
+  	<module>lexiang-manager-service</module>
+  	<module>lexiang-manager-web</module>
+  </modules>
+  
+  <build>
+  	<plugins>
+  	   <!-- tomcat运行插件 -->
+  		<plugin>
+  			<groupId>org.apache.tomcat.maven</groupId>
+			<artifactId>tomcat7-maven-plugin</artifactId>
+			<configuration>
+				<port>8080</port>
+				<path>/main</path>
+			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  
+  
+  
+</project>
