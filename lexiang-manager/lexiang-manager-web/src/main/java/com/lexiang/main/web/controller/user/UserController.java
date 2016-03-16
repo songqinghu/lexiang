@@ -1,4 +1,4 @@
-package com.lexiang.main.web.controller;
+package com.lexiang.main.web.controller.user;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -32,11 +33,20 @@ public class UserController {
 	@Resource
 	private UserService userServiceImpl;
 	
-	
+	/**
+	 * 
+	 * <p>Title: addUser</p>
+	 * <p>Description: </p>
+	 * @param user 用户注册必须信息封装
+	 * @param request 原始潜在信息收集
+	 * @param checkCode 验证码
+	 * @return 成功跳转到提示邮箱校验页面 失败进入统一失败页面处理
+	 */
 	@RequestMapping("/addUser")
-	public String  addUser(User user,HttpServletRequest request){
+	public String  addUser(User user,HttpServletRequest request,String checkCode){
 		
 		ResultData<String> result ;
+		System.out.println(checkCode);
 		//用户信息输入信息
 		if(user!=null){
 			if(StringUtils.isNotBlank(user.getUsername())&&

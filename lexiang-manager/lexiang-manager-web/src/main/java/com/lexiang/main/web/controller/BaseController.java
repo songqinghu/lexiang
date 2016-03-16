@@ -23,4 +23,11 @@ public class BaseController {
         return index;
     }
     
+    @RequestMapping("/{catalog}/{index}")
+    public String toPage(@PathVariable("catalog") String catalog,@PathVariable("index")String index){
+        
+    	return catalog+"/"+index;
+    }
+    
+    
 }

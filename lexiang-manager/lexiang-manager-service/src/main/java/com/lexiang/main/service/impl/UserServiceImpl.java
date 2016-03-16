@@ -34,7 +34,8 @@ public class UserServiceImpl implements UserService {
 		user.setCreateDate(new Date());
 		user.setUpdateDate(new Date());
 		user.setStatus(0+"");
-		int userId = userMapper.insertUser(user);
+		userMapper.insertUser(user);
+		long userId= user.getUserId();
 		System.out.println(userId);
 		ResultData<String> result = new ResultData<String>();
 		result.setMateData(userId+"");

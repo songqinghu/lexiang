@@ -42,9 +42,39 @@
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
-		
-		
-		
+	<!-- 验证码部分 -->	
+	<servlet>
+        <servlet-name>imageServlet</servlet-name>
+        <servlet-class>com.lexiang.main.web.checkcode.CheckCodeUtils</servlet-class>
+        <init-param>
+        <!-- 图宽 -->
+            <param-name>imgWidth</param-name>
+            <param-value>200</param-value>
+        </init-param>
+        <init-param>
+        <!-- 图高 -->
+            <param-name>imgHeight</param-name>
+            <param-value>80</param-value>
+        </init-param>
+        <init-param>
+        <!-- 显示的字符数 -->
+            <param-name>codeCount</param-name>
+            <param-value>5</param-value>
+        </init-param>
+        <init-param>
+        <!-- 字体类型 -->
+            <param-name>fontStyle</param-name>
+            <param-value>Times New Roman</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+ 
+ 
+    <servlet-mapping>
+        <servlet-name>imageServlet</servlet-name>
+        <url-pattern>/imageServlet</url-pattern>
+    </servlet-mapping>	
+	<!-- 验证码结束 -->
 	<!-- 配置 乱码拦截器 -->
 		<filter>
 			<filter-name>encodingFilter</filter-name>
