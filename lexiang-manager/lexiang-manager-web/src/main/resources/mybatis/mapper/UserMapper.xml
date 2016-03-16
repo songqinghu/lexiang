@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		INSERT INTO USER(username,password,email,createdate,updatedate,status) VALUES 
-		(#{username},#{password},#{email},#{createdate}.#{updatedate},#{status})
+		(#{username},#{password},#{email},#{createDate},#{updateDate},#{status})
 	</insert>
 	
 </mapper>	

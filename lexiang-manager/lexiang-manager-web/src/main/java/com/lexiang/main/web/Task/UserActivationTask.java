@@ -1,4 +1,7 @@
 package com.lexiang.main.web.Task;
+
+import org.springframework.beans.factory.annotation.Value;
+
 /**
  * 
  * <p>Title: UserActivationTask.java</p>
@@ -16,7 +19,14 @@ public class UserActivationTask {
 	 * <p>Title: method</p>
 	 * <p>Description:定时执行的方法 </p>
 	 */
+    @Value("${jdbc.driver}")
+    private String driver;
+    
+    private long time=1;
+    
 	public void  method(){
-		System.out.println("定时任务执行");
+	    long start = System.currentTimeMillis();
+		System.out.println("定时任务执行  时间:"+(time-start)+"  driver: "+driver);
+		time = start;
 	}
 }

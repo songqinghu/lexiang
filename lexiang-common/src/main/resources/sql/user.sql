@@ -20,11 +20,11 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `userId` bigint(20) NOT NULL,
+  `userId` bigint(20)   primary key not null auto_increment ,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
+  `status` varchar(2) DEFAULT NULL,
   `createdate` datetime DEFAULT NULL,
-  `updatedate` datetime DEFAULT NULL,
-  PRIMARY KEY (`userId`)
+  `updatedate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

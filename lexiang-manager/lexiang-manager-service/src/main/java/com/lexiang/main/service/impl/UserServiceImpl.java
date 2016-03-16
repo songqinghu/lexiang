@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lexiang.main.common.utils.ResultData;
 import com.lexiang.main.mapper.orm.UserMapper;
@@ -13,6 +14,7 @@ import com.lexiang.main.pojo.po.User;
 import com.lexiang.main.service.UserService;
 
 @Service("userServiceImpl")
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Resource

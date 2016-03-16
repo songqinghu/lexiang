@@ -16,15 +16,15 @@
 	<context:component-scan base-package="com.lexiang.main.service"></context:component-scan>
 	
 	<!-- 定时器开关--> 
-<!-- 	<task:annotation-driven />    
+	<task:annotation-driven />    
     
-    <bean id="myTaskXml" class="com.lexiang.web.Task"></bean>    
+    <bean id="myTaskXml" class="com.lexiang.main.web.Task.UserActivationTask"></bean>    
     
     <task:scheduled-tasks>    
           
-            这里表示的是每隔五秒执行一次   
+     <!-- 这里表示的是每隔五秒执行一次 -->   
            
         <task:scheduled ref="myTaskXml" method="method" cron="${cron}" />      
-    </task:scheduled-tasks>  -->
+    </task:scheduled-tasks> 
 	
 </beans>

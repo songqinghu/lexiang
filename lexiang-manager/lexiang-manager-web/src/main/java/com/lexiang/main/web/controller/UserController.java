@@ -43,13 +43,13 @@ public class UserController {
 			   StringUtils.isNotBlank(user.getPassword())&&
 			   StringUtils.isNotBlank(user.getEmail())){
 				result = userServiceImpl.addUser(user);
-				return result.getMateData();
+				return "success";
 			}
 		}
 		
 		//潜在信息挖掘
 		
-		return "失败";
+		return "error";
 	}
 	
 	

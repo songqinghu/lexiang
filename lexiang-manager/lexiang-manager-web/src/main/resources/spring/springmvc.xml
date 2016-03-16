@@ -12,7 +12,7 @@
 
 
 	<!-- 扫描 注解 -->
-		<context:component-scan base-package="com.lexiang.main.controller"></context:component-scan>
+		<context:component-scan base-package="com.lexiang.main.web"></context:component-scan>
 	<!-- 配置解析器 -->
 		<mvc:annotation-driven></mvc:annotation-driven>
 	<!-- 视图解析器 -->
