@@ -17,8 +17,35 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="maxActive" value="10" />
-		<property name="minIdle" value="5" />
+		<!-- 配置初始化大小、最小、最大 -->
+		<!-- 通常来说，只需要修改initialSize、minIdle、maxActive -->
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" />
+		<property name="maxActive" value="20" />
+
+		<!--对于长时间不使用的连接强制关闭 -->
+		<property name="removeAbandoned" value="true" />
+		<!--超过指定时间的空闲连接 -->
+		<property name="removeAbandonedTimeout" value="1800" />
+
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="3000" />
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="20" />
+
+		<!-- 解密密码必须要配置的项 -->
+		<property name="filters" value="config" />
+		<property name="connectionProperties" value="config.decrypt=false" />
 	</bean>
 
 	<!-- sqlsessionfactory -->
@@ -29,8 +56,15 @@
 
 	<!-- mapper代理配置 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="sqlSessionFactory"  ref="sqlSessionFactory"></property>
-		<property name="basePackage" value="com.lexiang.main.mapper.orm"></property>
+		 <property name="basePackage" value="com.lexiang.main.mapper.orm" />
+		 <!-- 这里不能使用的配置  name=sqlSessionFactory 这样子会导致 数据源中spring注入项还未注入就初始化了数据源-->
+ 		 <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
+	
+	<!-- 原始灵活的方式 国美美信配置 -->
+		<!-- SqlSession模板类实例 -->
+<!-- 	<bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="close">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean> -->
 	
 </beans>
