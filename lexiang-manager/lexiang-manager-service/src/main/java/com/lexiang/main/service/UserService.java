@@ -21,5 +21,9 @@ public interface UserService {
 	 * @return
 	 */
 	public ResultData<String> addUser(User user);
+
+	public boolean findUsernameByKey(String username);
+
+	public boolean findEmailByKey(String email);
 	
 }

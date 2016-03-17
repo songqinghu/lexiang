@@ -41,5 +41,41 @@ public class UserServiceImpl implements UserService {
 		result.setMateData(userId+"");
 		return result;
 	}
+	
+	/**
+	 * 
+	 * <p>Title: findUsernameByKey</p>
+	 * <p>Description:根据用户名查找数据库 </p>
+	 * @param username
+	 * @return
+	 * @see com.lexiang.main.service.UserService#findUsernameByKey(java.lang.String)
+	 */
+	@Override
+	public boolean findUsernameByKey(String username) {
+		
+		int result = userMapper.findUsernameByKey(username);
+		
+		return result == 0 ? true: false;
+	}
 
+	/**
+	 * 
+	 * <p>Title: findEmailByKey</p>
+	 * <p>Description:根据email查询数据库 </p>
+	 * @param email
+	 * @return
+	 * @see com.lexiang.main.service.UserService#findEmailByKey(java.lang.String)
+	 */
+	@Override
+	public boolean findEmailByKey(String email) {
+		
+		int result = userMapper.findEmailByKey(email);
+		
+		return result == 0 ? true: false;
+	}
+
+	
+	
+	
+	
 }

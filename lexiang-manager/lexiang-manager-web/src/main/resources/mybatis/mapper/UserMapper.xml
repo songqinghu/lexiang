@@ -46,4 +46,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{username},#{password},#{email},#{createDate},#{updateDate},#{status})
 	</insert>
 	
+	
+	<select id="findUsernameByKey"  parameterType="java.lang.String" resultType="int" >
+		select count(1)  from user where 1=1 and username = #{x}
+ 	</select>
+ 	
+	<select id="findEmailByKey"  parameterType="java.lang.String" resultType="int">
+		select count(1)  from user where 1=1 and email = #{x}
+ 	</select>
+	
+	
+	
+	
+	
 </mapper>	

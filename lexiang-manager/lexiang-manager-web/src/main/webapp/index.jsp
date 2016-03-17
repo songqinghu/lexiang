@@ -4,14 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>乐享求书网</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<span></span>
-	<span></span>
-	<span></span>
-	<span></span>
-	<span></span>
-	<h1>欢迎您-来到乐享!快乐分享,成就你我!</h1>
+	<h1>Hello World</h1>
+	<form action="http://localhost:8080/mian/user/login"  method="post"  enctype="application/x-www-form-urlencoded">
+	
+		用户名:<input type="text" name="username"><br>
+		密码: <input type="password" name="password"><br>
+		<input type="submit"  value="登录"><br> 
+	</form>
+	<h4>还没注册?<a href="http://localhost:8080/main/base/login/register">注册</a></h4>
 </body>
 </html>

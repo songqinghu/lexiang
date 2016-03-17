@@ -1,5 +1,7 @@
 package com.lexiang.main.mapper.orm;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.lexiang.main.pojo.po.User;
 
 /**
@@ -16,5 +18,17 @@ public interface UserMapper {
 
 	
 	public int insertUser(User user);
+
+	/**
+	 * 
+	 * <p>Title: findUsernameByKey</p>
+	 * <p>Description:试试看 </p>
+	 * @param username
+	 * @return
+	 */
+	public int findUsernameByKey(String username);
+
+	public int findEmailByKey(String email);
+	
 	
 }
