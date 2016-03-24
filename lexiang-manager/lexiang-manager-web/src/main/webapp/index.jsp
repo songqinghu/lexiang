@@ -15,5 +15,6 @@
 		<input type="submit"  value="登录"><br> 
 	</form>
 	<h4>还没注册?<a href="http://localhost:8080/main/base/login/register">注册</a></h4>
+	<h4>上传文件?<a href="http://localhost:8080/main/base/book/upload">点我</a></h4>
 </body>
 </html>

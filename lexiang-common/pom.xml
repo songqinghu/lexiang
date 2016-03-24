@@ -61,5 +61,17 @@
 			<artifactId>jsp-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.0-alpha3</version>
+		</dependency>
+		<!-- POI 操作excel -->
+		<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>3.12</version>
+		</dependency>
+		
 	</dependencies>
 </project>

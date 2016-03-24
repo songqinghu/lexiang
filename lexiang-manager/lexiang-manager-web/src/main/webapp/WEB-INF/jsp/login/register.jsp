@@ -9,7 +9,7 @@
 <body>
 	
 	
-	<form  alt="" action="http://localhost:8080/main/user/adduser" method="post"  enctype="application/x-www-form-urlencoded">
+	<form  alt="" action="/main/user/adduser" method="post"  enctype="application/x-www-form-urlencoded">
 		用户名:  <input id="userId" type="text"  alt="" maxlength="20" name="username" ><br>
 		密码:    <input id="passwordId" type="password"  alt="" maxlength="20" name="password" ><br>
 		密码确认:<input id="repasswordId" type="password"  alt="" maxlength="20" name="repassword" ><br>
