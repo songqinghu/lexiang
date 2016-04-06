@@ -1,7 +1,5 @@
 package com.lexiang.main.mapper.orm;
 
-import org.apache.ibatis.annotations.Select;
-
 import com.lexiang.main.pojo.po.User;
 
 /**

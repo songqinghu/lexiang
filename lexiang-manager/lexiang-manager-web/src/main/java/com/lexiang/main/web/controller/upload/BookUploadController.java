@@ -3,14 +3,23 @@ package com.lexiang.main.web.controller.upload;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.management.RuntimeErrorException;
 
 import org.apache.http.client.HttpClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.lexiang.main.common.utils.LoggerUtils;
+import com.lexiang.main.common.utils.ResultData;
+import com.lexiang.main.mapper.po.UpBook;
+import com.lexiang.main.mapper.utils.ExcelReadUtils;
+import com.lexiang.main.service.BookUploadService;
+import com.lexiang.main.service.impl.BookUploadServiceImpl;
 
 /**
  * 
@@ -26,6 +35,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/upload")
 public class BookUploadController {
 
+	@Resource
+	private BookUploadService bookUploadServiceImpl;
+	
 	@RequestMapping("/book")
 	public String uploadBook(String bookName,MultipartFile pictureFile) throws RuntimeException, IOException{
 		if(pictureFile != null){
@@ -62,8 +74,8 @@ public class BookUploadController {
 	 * @return
 	 * @throws IOException 
 	 */
-	@RequestMapping("/exe")
-	public String uploadExe(MultipartFile exeFile) {
+	@RequestMapping("/excel")
+	public String uploadExcel(MultipartFile exeFile) {
 		
 		if(exeFile != null){
 			
@@ -72,30 +84,50 @@ public class BookUploadController {
 			//如果没有名称，则上传不成功
 			if(originalFilename != null && originalFilename.length()>0 )
 			{
-				try {
-					if(originalFilename.endsWith("xls")){//第一种情况格式
+				if(originalFilename.endsWith("xls")){
+					try {
 						//使用POI工具类读取excel文件中的信息
-					     InputStream is = exeFile.getInputStream();
+						InputStream is = exeFile.getInputStream();
 						
-					     
-					     
+						ExcelReadUtils readUtils = new ExcelReadUtils();
 						
-					}else if(originalFilename.endsWith("xlsx")){//第二种情况格式
+						List<UpBook> books = readUtils.getDataForExcel7(is);
+
+						ResultData<Boolean> result = bookUploadServiceImpl.addBooks(books);
 						
-					}else{//都不是 报错
-						
+						//这里应该传回result  有待优化
+					} catch (IOException e) {
+						LoggerUtils.getLogger().error("",e);
 					}
-				} catch (IOException e) {
-					e.printStackTrace();
+					
+					return "success";
+				}else{
+					throw  new RuntimeException("非法文件,请使用xls文件");
 				}
-				
-			}else{
-				
-			}
+		   }
 		}
-		return null;
+		return "error";
 	}
-	
-	
+	/**
+	 * 
+	 * <p>Title: updateBookInfo</p>
+	 * <p>Description:更新图书信息 </p>
+	 * @param book
+	 * @return
+	 */
+	@RequestMapping("/update/book")
+	public String updateBookInfo(UpBook book){
+		
+		if(book.getBookId()!= 0){
+			ResultData<Boolean> result = bookUploadServiceImpl.updateBook(book);
+			
+			Boolean data = result.getMateData();
+			if(data){
+				return "success";
+			}
+			
+		}
+		return "error";
+	}
 	
 }
