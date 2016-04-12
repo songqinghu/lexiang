@@ -1,6 +1,9 @@
 package com.lexiang.main.mapper.orm;
 
+import java.util.List;
+
 import com.lexiang.main.mapper.po.UpBook;
+import com.lexiang.main.pojo.query.BookQuery;
 
 /**
  * 
@@ -20,5 +23,8 @@ public interface UploadBookMapper {
 	public int updateBook(UpBook book);
 	
 	public UpBook findOneById(long bookId);
+	
+	
+	public List<UpBook> findList(BookQuery query);
 	
 }

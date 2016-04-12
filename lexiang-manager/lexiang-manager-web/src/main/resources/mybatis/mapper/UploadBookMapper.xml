@@ -57,7 +57,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SELECT bookId,bookname,booktype,author,urlpath,password,status,createtime from BOOK WHERE bookId = #{bookId}
 	</select>
 	
+	<select id="findList"  resultType="com.lexiang.main.mapper.po.UpBook"  parameterType="BookQuery">
 	
+	 Select  bookId,bookname,booktype,author,urlpath,password,status,createtime from BOOK
+	  	<where>
+	  			
+	  					<if test="bookname !=null  and bookname !=''">
+	  					    and bookname like '%${bookname}%'
+	  					</if>
+	  					<if test="booktype !=null  and booktype !=''">
+	  					    and booktype like '%${booktype}%'
+	  					</if>
+	  					<if test="author !=null  and author !=''">
+	  					    and author like '%${author}%'
+	  					</if>
+	  </where>
+	  limit #{start},#{pageSize}
+	</select>
+	
+	    <!-- where可以自动去掉第一个条件的and -->  
+<!--     <where>  
+        <if test="userCustom!=null">  
+            <if test="userCustom.sex!=null and userCustom.sex!=''">  
+                and t_user.sex=#{userCustom.sex}  
+            </if>  
+            <if test="userCustom.username!=null and userCustom.username!=''">  
+                and t_user.username like '%${userCustom.username}%'  
+            </if>  
+        </if>  
+    </where>   -->
 	
 	
 </mapper>	
